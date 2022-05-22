@@ -11,13 +11,13 @@ using std::string;
 #endif /* data_analytics_h */
 namespace splashkit_lib
 {
-    // string set_decimal_places(string input);
+    // string set_decimal_places(string input);             [Was present from T3, removed for now as it didn't work and round function already exists]
 
-    // string get_file_name(string original_file_path);
+    // string get_file_name(string original_file_path);     [Was present in T3 code, didn't work. Required imports out of scope]
 
     void save_file(string input, string path);
 
-    // void save_file_as(string input);
+    // void save_file_as(string input);                     [Was present in T3 code, didn't work. Required imports out of scope]
 
     bool input_has_symbol(string input);
 

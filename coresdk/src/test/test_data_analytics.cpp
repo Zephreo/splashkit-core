@@ -16,13 +16,12 @@ using namespace splashkit_lib;
 int integer_convert_check(string s)
 {
     if (is_integer(s))
-    { 
+    {
         return convert_to_integer(s);
     }
     write_line("Input was not an integer");
-    return -1; 
+    return -1;
 }
-
 
 void test_data_validation()
 {
@@ -39,126 +38,125 @@ void test_data_validation()
     // Run different validations depending on choice
     switch (choice)
     {
-        case 1:
-        {
-            write_line("== Validating email ==\n");
+    case 1:
+    {
+        write_line("== Validating email ==\n");
 
-            // Get input text to validate
-            write_line("Enter text to validate:");
-            if (input_is_email(read_line()))
-            {
-                write_line("Input is valid email.");
-            }
-            else
-            {
-                write_line("Input is not a valid email.");
-            }
-            break;
+        // Get input text to validate
+        write_line("Enter text to validate:");
+
+        if (input_is_email(read_line()))
+        {
+            write_line("Input is valid email.");
         }
+        else
+        {
+            write_line("Input is not a valid email.");
+        }
+        break;
+    }
+
+    case 2:
+    {
+        write_line("== Validating phone number ==\n");
+
+        // Get input text to validate
+        write_line("Enter text to validate:");
+        if (input_is_phone_number(read_line()))
+        {
+            write_line("Input is a valid phone number.");
+        }
+        else
+        {
+            write_line("Input is not a valid phone number.");
+        }
+        break;
+    }
+    case 3:
+    {
+        write_line("== Validating URL ==\n");
+
+        // Get input text to validate
+        write_line("Enter text to validate:");
+        if (input_is_valid_url(read_line()))
+        {
+            write_line("Input is a valid URL");
+        }
+        else
+        {
+            write_line("Input is not a valid URL.");
+        }
+        break;
+    }
+
+    // Run all validation tests in attempt to identify input type.
+    case 4:
+    {
+        write_line("== Validating text with validation set ==");
+
+        // Get input text to validate
+        write_line("Enter text to validate:");
+        int input_type = identify_input_type(read_line());
+
+        switch (input_type)
+        {
+        case 1:
+            write_line("Input is a phone number.");
+            break;
 
         case 2:
-        {
-            write_line("== Validating phone number ==\n");
-
-            // Get input text to validate
-            write_line("Enter text to validate:");
-            if (input_is_phone_number(read_line()))
-            {
-                write_line("Input is a valid phone number.");
-            }
-            else
-            {
-                write_line("Input is not a valid phone number.");
-            }
+            write_line("Input is an email address.");
             break;
-        }
+
         case 3:
-        {
-            write_line("== Validating URL ==\n");
-
-            // Get input text to validate
-            write_line("Enter text to validate:");
-            if (input_is_valid_url(read_line()))
-            {
-                write_line("Input is a valid URL");
-            }
-            else
-            {
-                write_line("Input is not a valid URL.");
-            }
+            write_line("Input is time.");
             break;
-        }
 
-        // Run all validation tests in attempt to identify input type.
         case 4:
-        {
-            write_line("== Validating text with validation set ==");
+            write_line("Input is a URL.");
+            break;
 
-            // Get input text to validate
-            write_line("Enter text to validate:");
-            int input_type = identify_input_type(read_line());
-
-            switch (input_type)
-            {
-                case 1:
-                    write_line("Input is a phone number.");
-                    break;
-
-                case 2:
-                    write_line("Input is an email address.");
-                    break;
-
-                case 3:
-                    write_line("Input is time.");
-                    break;
-
-                case 4:
-                    write_line("Input is a URL.");
-                    break;
-
-                case -1:
-                    write_line("Input does not match any validation tests.");
-                    break;
-            }
+        case -1:
+            write_line("Input does not match any validation tests.");
             break;
         }
-        default:
-            write_line("Invalid option.");
+        break;
+    }
+    default:
+        write_line("Invalid option.");
     }
 }
-
 
 void run_data_analytics_test()
 {
     int test = 0;
-    do {
+    do
+    {
         write_line("== Data Analytics Module ==\n"
-        "-1. Quit Data Analytics Module\n"
-        "0. Data Validation\n"
-        "Select an option: ");
+                   "-1. Quit Data Analytics Module\n"
+                   "0. Data Validation\n"
+                   "Select an option: ");
 
-        
         test = integer_convert_check(read_line());
 
         switch (test)
         {
-            case -1:
-            {
-                write_line("Return to SplashKit Test Main");
-                break;
-            }
-            case 0:
-            {
-                test_data_validation();
-                break;
-            }
-            default:
-            {
-                write_line("Invalid option.");
-                break;
-            }    
+        case -1:
+        {
+            write_line("Return to SplashKit Test Main");
+            break;
+        }
+        case 0:
+        {
+            test_data_validation();
+            break;
+        }
+        default:
+        {
+            write_line("Invalid option.");
+            break;
+        }
         }
 
     } while (test != -1);
-    
 }
