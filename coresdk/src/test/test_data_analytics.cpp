@@ -12,7 +12,7 @@
 using namespace std;
 using namespace splashkit_lib;
 
-// Uses SplaskKit inbuilt functions to ensure input is able to be converted to integer as non-integer conversions broke the program.
+// Uses SplashKit inbuilt functions to ensure input is able to be converted to integer as non-integer conversions break the program.
 int integer_convert_check(string s)
 {
     if (is_integer(s))
@@ -20,7 +20,7 @@ int integer_convert_check(string s)
         return convert_to_integer(s);
     }
     write_line("Input was not an integer");
-    return -1;
+    return -1; // TODO: What if input was -1?
 }
 
 void test_data_validation()
@@ -137,7 +137,7 @@ void run_data_analytics_test()
                    "0. Data Validation\n"
                    "Select an option: ");
 
-        test = integer_convert_check(read_line());
+        test = integer_convert_check(read_line()); // TODO: Have you checked utility_functions.h : `try_str_to_int()`? (or `str_to_int()`)
 
         switch (test)
         {

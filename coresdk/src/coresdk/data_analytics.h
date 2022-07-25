@@ -8,7 +8,6 @@
 using namespace std;
 using std::string;
 
-#endif /* data_analytics_h */
 namespace splashkit_lib
 {
     // string set_decimal_places(string input);             [Was present from T3, removed for now as it didn't work and round function already exists]
@@ -36,8 +35,8 @@ namespace splashkit_lib
     // REGEX PATTERNS
     const regex symbols_pattern("^(?=.*[-+_!@#$%^&*., ?]).+$");
     const regex ABC_pattern("^(?=.*[A-z]).+$");
-    const regex URL_pattern("^http[s]?:\/\/(www\.)?(.*)?\/?(.)*");
-    const regex phone_number_pattern("^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$");
+    const regex URL_pattern("^http[s]?:\\/\\/(www\\.)?(.*)?\\/?(.)*");
+    const regex phone_number_pattern("^[\\+]?[(]?[0-9]{3}[)]?[-\\s\\.]?[0-9]{3}[-\\s\\.]?[0-9]{4,6}$");
     const regex email_pattern("[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}");
     const regex time_pattern("([0-9]|0[0-9]|1[0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9])");
 
@@ -62,7 +61,7 @@ namespace splashkit_lib
         };
         // Basic Constructor/Destructor
         DataFrame() = delete;
-        ~DataFrame();
+        ~DataFrame() {};
 
         // Takes DataFrame as R-Value (Allows std::move)
         DataFrame(const DataFrame &&_other);
@@ -78,7 +77,7 @@ namespace splashkit_lib
         // Export To FILE
         const void exportToFile(string _fileName, flags _eType = OVERRIDE_FILE) const;
 
-        // Push back new row into dataframe
+        // Push back new row into DataFrame
         void push_back(const string (&_arr)[], unsigned int _length);
         void push_back(const string(_arr)[], unsigned int _length);
         void push_back(const DataFrame<T> _dFrame);
@@ -161,3 +160,4 @@ namespace splashkit_lib
         void quickSort(int _low, int _high, int _column, flags _flag);
     };
 }
+#endif /* data_analytics_h */
